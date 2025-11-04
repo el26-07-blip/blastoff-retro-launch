@@ -139,6 +139,56 @@ export const games: Game[] = [
   { id: "final-fantasy", title: "Final Fantasy VII", category: "RPG", icon: "🗡️", level: 8, unlocked: false, rating: 4.9, plays: 567890, playable: false, description: "Epic JRPG adventure" },
   { id: "chrono", title: "Chrono Adventure", category: "RPG", icon: "⏰", level: 8, unlocked: false, rating: 4.9, plays: 456789, playable: false, description: "Time-traveling RPG" },
   { id: "earthbound", title: "Mother's Journey", category: "RPG", icon: "🌍", level: 7, unlocked: false, rating: 4.8, plays: 345678, playable: false, description: "Quirky RPG classic" },
+
+  // Horror & Survival
+  { id: "resident", title: "Zombie Mansion", category: "Horror", icon: "🧟", level: 8, unlocked: false, rating: 4.8, plays: 456789, playable: false, description: "Survive the horror" },
+  { id: "silent", title: "Silent Town", category: "Horror", icon: "🌫️", level: 9, unlocked: false, rating: 4.9, plays: 387654, playable: false, description: "Psychological horror" },
+  { id: "dead-space", title: "Space Terror", category: "Horror", icon: "👽", level: 8, unlocked: false, rating: 4.7, plays: 298765, playable: false, description: "Sci-fi horror survival" },
+
+  // Stealth & Action
+  { id: "metal-gear", title: "Tactical Espionage", category: "Stealth", icon: "📦", level: 7, unlocked: false, rating: 4.9, plays: 434567, playable: false, description: "Stealth action legend" },
+  { id: "splinter", title: "Shadow Agent", category: "Stealth", icon: "🕶️", level: 7, unlocked: false, rating: 4.7, plays: 298765, playable: false, description: "Third echelon operative" },
+  { id: "hitman", title: "Silent Assassin", category: "Stealth", icon: "🎯", level: 8, unlocked: false, rating: 4.8, plays: 367890, playable: false, description: "Professional eliminations" },
+
+  // Arcade Shooters
+  { id: "doom", title: "Hell Walker", category: "Shooter", icon: "😈", level: 7, unlocked: false, rating: 4.9, plays: 567890, playable: false, description: "Legendary FPS action" },
+  { id: "quake", title: "Arena Fighter", category: "Shooter", icon: "⚡", level: 8, unlocked: false, rating: 4.8, plays: 445678, playable: false, description: "Fast-paced shooter" },
+  { id: "goldeneye", title: "Secret Agent 007", category: "Shooter", icon: "🔫", level: 7, unlocked: false, rating: 4.9, plays: 498765, playable: false, description: "Spy shooter classic" },
+  { id: "halo", title: "Spartan Warrior", category: "Shooter", icon: "🪐", level: 8, unlocked: false, rating: 5.0, plays: 689654, playable: false, description: "Epic space combat" },
+
+  // Music & Rhythm Expanded
+  { id: "ddr-pro", title: "Dance Master Pro", category: "Rhythm", icon: "🕺", level: 6, unlocked: false, rating: 4.8, plays: 378654, playable: false, description: "Expert dance moves" },
+  { id: "rockband", title: "Rock Band Legends", category: "Rhythm", icon: "🎤", level: 7, unlocked: false, rating: 4.9, plays: 445678, playable: false, description: "Full band experience" },
+  { id: "osu", title: "Beat Circle", category: "Rhythm", icon: "⭕", level: 6, unlocked: false, rating: 4.7, plays: 334567, playable: false, description: "Click the beats" },
+
+  // Party Games
+  { id: "party1", title: "Mini Game Madness", category: "Party", icon: "🎉", level: 4, unlocked: true, rating: 4.8, plays: 445678, playable: false, description: "100+ mini games" },
+  { id: "party2", title: "Board Game Star", category: "Party", icon: "🎲", level: 5, unlocked: true, rating: 4.7, plays: 378654, playable: false, description: "Virtual board game fun" },
+  { id: "party3", title: "Jackbox Party", category: "Party", icon: "📱", level: 6, unlocked: false, rating: 4.9, plays: 498765, playable: false, description: "Phone-based party games" },
+  { id: "party4", title: "Wii Sports Pro", category: "Party", icon: "🎾", level: 4, unlocked: true, rating: 4.8, plays: 567890, playable: false, description: "Motion sports collection" },
+
+  // Indie Favorites
+  { id: "indie1", title: "Celeste Mountain", category: "Indie", icon: "⛰️", level: 5, unlocked: true, rating: 5.0, plays: 445678, playable: false, description: "Challenging platformer" },
+  { id: "indie2", title: "Hollow Knight", category: "Indie", icon: "🦋", level: 6, unlocked: false, rating: 4.9, plays: 556789, playable: false, description: "Metroidvania masterpiece" },
+  { id: "indie3", title: "Stardew Farm", category: "Indie", icon: "🌾", level: 5, unlocked: true, rating: 4.9, plays: 689654, playable: false, description: "Farming simulation" },
+  { id: "indie4", title: "Undertale", category: "Indie", icon: "❤️", level: 6, unlocked: false, rating: 5.0, plays: 598765, playable: false, description: "Choose mercy or fight" },
+  { id: "indie5", title: "Dead Cells", category: "Indie", icon: "⚔️", level: 7, unlocked: false, rating: 4.8, plays: 434567, playable: false, description: "Roguelike action" },
+
+  // Sandbox & Creative
+  { id: "minecraft", title: "Block World", category: "Sandbox", icon: "🧱", level: 3, unlocked: true, rating: 5.0, plays: 1234567, playable: false, description: "Build anything you imagine" },
+  { id: "terraria", title: "2D Adventure Dig", category: "Sandbox", icon: "⛏️", level: 4, unlocked: true, rating: 4.9, plays: 789654, playable: false, description: "Dig, fight, build" },
+  { id: "starbound", title: "Space Explorer", category: "Sandbox", icon: "🌌", level: 5, unlocked: false, rating: 4.7, plays: 445678, playable: false, description: "Explore infinite universe" },
+
+  // Battle Royale
+  { id: "battle1", title: "Last One Standing", category: "Battle", icon: "🎯", level: 8, unlocked: false, rating: 4.8, plays: 889654, playable: false, description: "100 player showdown" },
+  { id: "battle2", title: "Victory Royale", category: "Battle", icon: "🏆", level: 9, unlocked: false, rating: 4.9, plays: 1145678, playable: false, description: "Build and battle" },
+  { id: "battle3", title: "Apex Legends", category: "Battle", icon: "🔺", level: 8, unlocked: false, rating: 4.8, plays: 778654, playable: false, description: "Hero shooter BR" },
+
+  // Retro Arcade Extended
+  { id: "arcade1", title: "Time Pilot", category: "Arcade", icon: "✈️", level: 3, unlocked: true, rating: 4.6, plays: 234567, playable: false, description: "Time-traveling shooter" },
+  { id: "arcade2", title: "Missile Command", category: "Arcade", icon: "🚀", level: 4, unlocked: true, rating: 4.7, plays: 198765, playable: false, description: "Defend the cities" },
+  { id: "arcade3", title: "Defender", category: "Arcade", icon: "🛸", level: 5, unlocked: false, rating: 4.8, plays: 276543, playable: false, description: "Horizontal shooter" },
+  { id: "arcade4", title: "Moon Patrol", category: "Arcade", icon: "🌙", level: 4, unlocked: true, rating: 4.5, plays: 187654, playable: false, description: "Lunar vehicle runner" },
 ];
 
 export const categories = ["All", ...Array.from(new Set(games.map((g) => g.category)))];

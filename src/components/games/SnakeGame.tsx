@@ -5,8 +5,11 @@ import { Play, RotateCcw } from "lucide-react";
 export const SnakeGame = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
+  const [speed, setSpeed] = useState(100);
+  const [foodType, setFoodType] = useState<'normal' | 'golden' | 'power'>('normal');
   const gameRef = useRef<any>(null);
 
   useEffect(() => {
@@ -28,6 +31,22 @@ export const SnakeGame = () => {
     let dx = 0;
     let dy = 0;
     let newScore = 0;
+    let currentSpeed = speed;
+    let currentFoodType: 'normal' | 'golden' | 'power' = 'normal';
+    let powerUpActive = false;
+    let powerUpTimer = 0;
+
+    const generateFood = () => {
+      const rand = Math.random();
+      currentFoodType = rand > 0.9 ? 'golden' : rand > 0.7 ? 'power' : 'normal';
+      setFoodType(currentFoodType);
+      return {
+        x: Math.floor(Math.random() * tileCount),
+        y: Math.floor(Math.random() * tileCount),
+      };
+    };
+
+    food = generateFood();
 
     const drawGame = () => {
       // Clear canvas
@@ -66,24 +85,57 @@ export const SnakeGame = () => {
 
       // Check food collision
       if (head.x === food.x && head.y === food.y) {
-        newScore += 10;
+        if (currentFoodType === 'golden') {
+          newScore += 50;
+          currentSpeed = Math.max(50, currentSpeed - 5);
+        } else if (currentFoodType === 'power') {
+          newScore += 30;
+          powerUpActive = true;
+          powerUpTimer = 50;
+        } else {
+          newScore += 10;
+        }
         setScore(newScore);
-        food = {
-          x: Math.floor(Math.random() * tileCount),
-          y: Math.floor(Math.random() * tileCount),
-        };
+        if (newScore > highScore) {
+          setHighScore(newScore);
+        }
+        food = generateFood();
       } else {
         snake.pop();
       }
 
-      // Draw food with glow
-      ctx.shadowBlur = 20;
-      ctx.shadowColor = "#00c8ff";
-      ctx.fillStyle = "#00c8ff";
-      ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+      // Handle power-up
+      if (powerUpActive) {
+        powerUpTimer--;
+        if (powerUpTimer <= 0) {
+          powerUpActive = false;
+        }
+      }
+
+      // Draw food with different colors and effects
+      ctx.shadowBlur = 25;
+      if (currentFoodType === 'golden') {
+        ctx.shadowColor = "#ffd700";
+        ctx.fillStyle = "#ffd700";
+      } else if (currentFoodType === 'power') {
+        ctx.shadowColor = "#ff00ff";
+        ctx.fillStyle = "#ff00ff";
+      } else {
+        ctx.shadowColor = "#00c8ff";
+        ctx.fillStyle = "#00c8ff";
+      }
+      ctx.beginPath();
+      ctx.arc(
+        food.x * gridSize + gridSize / 2,
+        food.y * gridSize + gridSize / 2,
+        gridSize / 2 - 1,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
       ctx.shadowBlur = 0;
 
-      // Draw snake
+      // Draw snake with power-up effect
       snake.forEach((segment, index) => {
         const gradient = ctx.createLinearGradient(
           segment.x * gridSize,
@@ -91,17 +143,29 @@ export const SnakeGame = () => {
           (segment.x + 1) * gridSize,
           (segment.y + 1) * gridSize
         );
-        gradient.addColorStop(0, index === 0 ? "#0099ff" : "#0066cc");
-        gradient.addColorStop(1, index === 0 ? "#00c8ff" : "#0099ff");
+        if (powerUpActive) {
+          gradient.addColorStop(0, index === 0 ? "#ff00ff" : "#cc00cc");
+          gradient.addColorStop(1, index === 0 ? "#ff66ff" : "#ff00ff");
+        } else {
+          gradient.addColorStop(0, index === 0 ? "#0099ff" : "#0066cc");
+          gradient.addColorStop(1, index === 0 ? "#00c8ff" : "#0099ff");
+        }
         ctx.fillStyle = gradient;
+        
+        if (index === 0) {
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = powerUpActive ? "#ff00ff" : "#00c8ff";
+        }
+        
         ctx.fillRect(segment.x * gridSize + 1, segment.y * gridSize + 1, gridSize - 2, gridSize - 2);
+        ctx.shadowBlur = 0;
       });
     };
 
     const gameLoop = setInterval(() => {
       if (dx === 0 && dy === 0) return;
       drawGame();
-    }, 100);
+    }, currentSpeed);
 
     const handleKeyPress = (e: KeyboardEvent) => {
       switch (e.key) {
@@ -161,7 +225,16 @@ export const SnakeGame = () => {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="flex items-center justify-between w-full">
-        <div className="text-2xl font-bold">Score: {score}</div>
+        <div className="space-y-1">
+          <div className="text-2xl font-bold">Score: {score}</div>
+          <div className="text-sm text-muted-foreground">High Score: {highScore}</div>
+          {foodType === 'golden' && (
+            <div className="text-xs text-yellow-400">🌟 Golden Apple: +50pts & Speed Boost!</div>
+          )}
+          {foodType === 'power' && (
+            <div className="text-xs text-purple-400">⚡ Power Apple: +30pts & Invincibility!</div>
+          )}
+        </div>
         <Button onClick={resetGame} size="sm" variant="outline" className="gap-2">
           <RotateCcw className="w-4 h-4" />
           Reset

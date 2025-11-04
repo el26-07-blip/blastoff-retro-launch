@@ -9,6 +9,8 @@ export const BreakoutGame = () => {
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
+  const [level, setLevel] = useState(1);
+  const [combo, setCombo] = useState(0);
 
   useEffect(() => {
     if (!gameStarted) return;
@@ -22,7 +24,7 @@ export const BreakoutGame = () => {
     canvas.width = 800;
     canvas.height = 500;
 
-    const paddleWidth = 100;
+    let paddleWidth = 100;
     const paddleHeight = 15;
     const ballRadius = 8;
     const brickRowCount = 5;
@@ -40,6 +42,9 @@ export const BreakoutGame = () => {
     let ballSpeedY = -4;
     let currentScore = 0;
     let currentLives = 3;
+    let currentCombo = 0;
+    let comboTimer = 0;
+    let powerUps: Array<{ x: number; y: number; type: string; dy: number }> = [];
 
     const bricks: { x: number; y: number; status: number }[][] = [];
     for (let c = 0; c < brickColumnCount; c++) {
@@ -82,15 +87,39 @@ export const BreakoutGame = () => {
             ) {
               ballSpeedY = -ballSpeedY;
               b.status = 0;
-              currentScore += 10;
+              
+              // Combo system
+              currentCombo++;
+              comboTimer = 60;
+              setCombo(currentCombo);
+              const comboMultiplier = Math.min(currentCombo, 10);
+              currentScore += 10 * comboMultiplier;
               setScore(currentScore);
 
-              if (currentScore === brickRowCount * brickColumnCount * 10) {
+              // Spawn power-ups randomly
+              if (Math.random() > 0.85) {
+                powerUps.push({
+                  x: b.x + brickWidth / 2,
+                  y: b.y,
+                  type: Math.random() > 0.5 ? 'extraLife' : 'bigPaddle',
+                  dy: 2,
+                });
+              }
+
+              if (currentScore >= brickRowCount * brickColumnCount * 10) {
                 setGameWon(true);
               }
             }
           }
         }
+      }
+
+      // Handle combo timer
+      if (comboTimer > 0) {
+        comboTimer--;
+      } else if (currentCombo > 0) {
+        currentCombo = 0;
+        setCombo(0);
       }
     };
 
@@ -120,6 +149,42 @@ export const BreakoutGame = () => {
       drawBall();
       drawPaddle();
       collisionDetection();
+
+      // Draw and update power-ups
+      powerUps.forEach((powerUp, index) => {
+        powerUp.y += powerUp.dy;
+
+        // Draw power-up
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = powerUp.type === 'extraLife' ? '#ff0000' : '#00ff00';
+        ctx.fillStyle = powerUp.type === 'extraLife' ? '#ff0000' : '#00ff00';
+        ctx.beginPath();
+        ctx.arc(powerUp.x, powerUp.y, 8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Check paddle collision
+        if (
+          powerUp.y >= canvas.height - paddleHeight - 10 &&
+          powerUp.x > paddleX &&
+          powerUp.x < paddleX + paddleWidth
+        ) {
+          if (powerUp.type === 'extraLife') {
+            currentLives++;
+            setLives(currentLives);
+          } else if (powerUp.type === 'bigPaddle') {
+            // Temporarily increase paddle size
+            const originalWidth = paddleWidth;
+            paddleWidth = 150;
+            setTimeout(() => {
+              paddleWidth = originalWidth;
+            }, 5000);
+          }
+          powerUps.splice(index, 1);
+        } else if (powerUp.y > canvas.height) {
+          powerUps.splice(index, 1);
+        }
+      });
 
       ballX += ballSpeedX;
       ballY += ballSpeedY;
@@ -189,8 +254,18 @@ export const BreakoutGame = () => {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="flex items-center justify-between w-full">
-        <div className="text-2xl font-bold">
-          Score: {score} | Lives: {lives}
+        <div className="space-y-1">
+          <div className="text-2xl font-bold">
+            Score: {score} | Lives: {lives}
+          </div>
+          {combo > 1 && (
+            <div className="text-sm text-accent animate-pulse">
+              🔥 Combo x{combo}!
+            </div>
+          )}
+          <div className="text-xs text-muted-foreground">
+            💚 = Big Paddle | ❤️ = Extra Life
+          </div>
         </div>
         <Button onClick={resetGame} size="sm" variant="outline" className="gap-2">
           <RotateCcw className="w-4 h-4" />

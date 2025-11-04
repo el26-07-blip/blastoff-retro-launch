@@ -6,6 +6,8 @@ export const PongGame = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [score, setScore] = useState({ player: 0, ai: 0 });
   const [gameStarted, setGameStarted] = useState(false);
+  const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
+  const [powerUpActive, setPowerUpActive] = useState(false);
 
   useEffect(() => {
     if (!gameStarted) return;
@@ -31,6 +33,20 @@ export const PongGame = () => {
     let ballSpeedY = 3;
     let playerScore = 0;
     let aiScore = 0;
+    let powerUp = { x: 0, y: 0, active: false, timer: 0 };
+    let paddleBoost = 1;
+    const aiSpeed = difficulty === 'easy' ? 2.5 : difficulty === 'medium' ? 4 : 5.5;
+
+    const spawnPowerUp = () => {
+      if (Math.random() > 0.95 && !powerUp.active) {
+        powerUp = {
+          x: Math.random() * (canvas.width - 100) + 50,
+          y: Math.random() * (canvas.height - 100) + 50,
+          active: true,
+          timer: 300,
+        };
+      }
+    };
 
     const drawGame = () => {
       // Clear canvas
@@ -93,12 +109,44 @@ export const PongGame = () => {
         resetBall();
       }
 
-      // AI movement
+      // Power-up logic
+      spawnPowerUp();
+      if (powerUp.active) {
+        powerUp.timer--;
+        if (powerUp.timer <= 0) {
+          powerUp.active = false;
+        }
+
+        // Draw power-up
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = "#ffff00";
+        ctx.fillStyle = "#ffff00";
+        ctx.beginPath();
+        ctx.arc(powerUp.x, powerUp.y, 15, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Check collision with player paddle
+        const dist = Math.sqrt(
+          Math.pow(powerUp.x - 25, 2) + Math.pow(powerUp.y - (playerY + paddleHeight / 2), 2)
+        );
+        if (dist < 25) {
+          powerUp.active = false;
+          paddleBoost = 1.5;
+          setPowerUpActive(true);
+          setTimeout(() => {
+            paddleBoost = 1;
+            setPowerUpActive(false);
+          }, 5000);
+        }
+      }
+
+      // AI movement with difficulty
       if (ballX > canvas.width / 2) {
         if (aiY + paddleHeight / 2 < ballY) {
-          aiY += 4;
+          aiY += aiSpeed;
         } else {
-          aiY -= 4;
+          aiY -= aiSpeed;
         }
       }
     };
@@ -114,7 +162,9 @@ export const PongGame = () => {
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      playerY = e.clientY - rect.top - paddleHeight / 2;
+      const targetY = e.clientY - rect.top - paddleHeight / 2;
+      const speed = paddleBoost * 10;
+      playerY += (targetY - playerY) * (speed / 100);
       playerY = Math.max(0, Math.min(canvas.height - paddleHeight, playerY));
     };
 
@@ -139,8 +189,39 @@ export const PongGame = () => {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="flex items-center justify-between w-full">
-        <div className="text-2xl font-bold">
-          You: {score.player} | AI: {score.ai}
+        <div className="space-y-2">
+          <div className="text-2xl font-bold">
+            You: {score.player} | AI: {score.ai}
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setDifficulty('easy')}
+              className={`text-xs px-3 py-1 rounded-full ${
+                difficulty === 'easy' ? 'bg-primary text-primary-foreground' : 'bg-muted'
+              }`}
+            >
+              Easy
+            </button>
+            <button
+              onClick={() => setDifficulty('medium')}
+              className={`text-xs px-3 py-1 rounded-full ${
+                difficulty === 'medium' ? 'bg-primary text-primary-foreground' : 'bg-muted'
+              }`}
+            >
+              Medium
+            </button>
+            <button
+              onClick={() => setDifficulty('hard')}
+              className={`text-xs px-3 py-1 rounded-full ${
+                difficulty === 'hard' ? 'bg-primary text-primary-foreground' : 'bg-muted'
+              }`}
+            >
+              Hard
+            </button>
+          </div>
+          {powerUpActive && (
+            <div className="text-xs text-yellow-400">⚡ Power Paddle Active!</div>
+          )}
         </div>
         <Button onClick={resetGame} size="sm" variant="outline" className="gap-2">
           <RotateCcw className="w-4 h-4" />
