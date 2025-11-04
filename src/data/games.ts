@@ -16,11 +16,13 @@ export const games: Game[] = [
   { id: "snake", title: "Snake Classic", category: "Arcade", icon: "🐍", level: 1, unlocked: true, rating: 4.8, plays: 152340, playable: true, description: "Classic snake game with modern twist" },
   { id: "pong", title: "Pong Battle", category: "Arcade", icon: "🏓", level: 1, unlocked: true, rating: 4.5, plays: 98234, playable: true, description: "The legendary paddle game" },
   { id: "breakout", title: "Brick Breaker", category: "Arcade", icon: "🧱", level: 2, unlocked: true, rating: 4.7, plays: 134567, playable: true, description: "Break all the bricks!" },
-  { id: "space", title: "Space Invaders", category: "Arcade", icon: "👾", level: 2, unlocked: true, rating: 4.9, plays: 187654, playable: false, description: "Defend Earth from aliens" },
-  { id: "pacman", title: "Pac-Maze", category: "Arcade", icon: "👻", level: 3, unlocked: true, rating: 4.9, plays: 234567, playable: false, description: "Eat dots, avoid ghosts" },
-  { id: "asteroids", title: "Asteroids", category: "Arcade", icon: "☄️", level: 3, unlocked: true, rating: 4.6, plays: 145678, playable: false, description: "Destroy space rocks" },
-  { id: "galaga", title: "Galaxy War", category: "Arcade", icon: "🚀", level: 4, unlocked: true, rating: 4.8, plays: 167890, playable: false, description: "Epic space shooter" },
-  { id: "digdug", title: "Dig Master", category: "Arcade", icon: "⛏️", level: 4, unlocked: false, rating: 4.4, plays: 98765, playable: false, description: "Dig and defeat monsters" },
+  { id: "space", title: "Space Invaders", category: "Arcade", icon: "👾", level: 2, unlocked: true, rating: 4.9, plays: 387654, playable: false, description: "Defend Earth from aliens" },
+  { id: "pacman", title: "Pac-Maze", category: "Arcade", icon: "👻", level: 3, unlocked: true, rating: 4.9, plays: 534567, playable: false, description: "Eat dots, avoid ghosts" },
+  { id: "asteroids", title: "Asteroids", category: "Arcade", icon: "☄️", level: 3, unlocked: true, rating: 4.6, plays: 245678, playable: false, description: "Destroy space rocks" },
+  { id: "galaga", title: "Galaxy War", category: "Arcade", icon: "🚀", level: 4, unlocked: true, rating: 4.8, plays: 367890, playable: false, description: "Epic space shooter" },
+  { id: "digdug", title: "Dig Master", category: "Arcade", icon: "⛏️", level: 4, unlocked: true, rating: 4.4, plays: 198765, playable: false, description: "Dig and defeat monsters" },
+  { id: "berzerk", title: "Robot Rampage", category: "Arcade", icon: "🤖", level: 5, unlocked: false, rating: 4.7, plays: 176543, playable: false, description: "Escape the robots" },
+  { id: "tempest", title: "Tempest Storm", category: "Arcade", icon: "🌀", level: 6, unlocked: false, rating: 4.6, plays: 154321, playable: false, description: "Tube shooter classic" },
   
   // Puzzle Games
   { id: "tetris", title: "Block Fall", category: "Puzzle", icon: "🎮", level: 1, unlocked: true, rating: 4.9, plays: 345678, playable: false, description: "Classic block puzzle" },
@@ -34,11 +36,15 @@ export const games: Game[] = [
 
   // Adventure Games  
   { id: "zelda", title: "Legend Quest", category: "Adventure", icon: "⚔️", level: 5, unlocked: true, rating: 4.9, plays: 456789, playable: false, description: "Epic adventure awaits" },
-  { id: "mario", title: "Platform Hero", category: "Adventure", icon: "🍄", level: 5, unlocked: true, rating: 4.9, plays: 567890, playable: false, description: "Jump and run adventure" },
-  { id: "sonic", title: "Speed Runner", category: "Adventure", icon: "💨", level: 6, unlocked: false, rating: 4.8, plays: 345678, playable: false, description: "Gotta go fast!" },
+  { id: "mario", title: "Super Plumber Bros", category: "Adventure", icon: "🍄", level: 5, unlocked: true, rating: 4.9, plays: 567890, playable: false, description: "Classic platforming adventure" },
+  { id: "crash", title: "Bandicoot Rush", category: "Adventure", icon: "🦊", level: 5, unlocked: true, rating: 4.9, plays: 512345, playable: false, description: "Spin and jump through levels" },
+  { id: "sonic", title: "Speed Runner", category: "Adventure", icon: "💨", level: 6, unlocked: true, rating: 4.8, plays: 345678, playable: false, description: "Gotta go fast!" },
   { id: "metroid", title: "Space Explorer", category: "Adventure", icon: "🛸", level: 6, unlocked: false, rating: 4.7, plays: 234567, playable: false, description: "Explore alien worlds" },
   { id: "castlevania", title: "Castle Quest", category: "Adventure", icon: "🧛", level: 7, unlocked: false, rating: 4.6, plays: 187654, playable: false, description: "Defeat the vampire lord" },
   { id: "megaman", title: "Robo Fighter", category: "Adventure", icon: "🤖", level: 7, unlocked: false, rating: 4.7, plays: 198765, playable: false, description: "Robot battle action" },
+  { id: "kirby", title: "Dream Adventure", category: "Adventure", icon: "🌸", level: 4, unlocked: true, rating: 4.8, plays: 287654, playable: false, description: "Cute hero saves the day" },
+  { id: "spyro", title: "Dragon Quest", category: "Adventure", icon: "🐉", level: 6, unlocked: false, rating: 4.7, plays: 234567, playable: false, description: "Purple dragon adventure" },
+  { id: "banjo", title: "Bear & Bird Quest", category: "Adventure", icon: "🐻", level: 7, unlocked: false, rating: 4.8, plays: 198765, playable: false, description: "Collect golden items" },
 
   // Sports Games
   { id: "tennis", title: "Court Champion", category: "Sports", icon: "🎾", level: 3, unlocked: true, rating: 4.5, plays: 134567, playable: false, description: "Tennis simulation" },
@@ -51,15 +57,20 @@ export const games: Game[] = [
   // Racing Games
   { id: "racing1", title: "Speed Racer", category: "Racing", icon: "🏎️", level: 4, unlocked: true, rating: 4.8, plays: 245678, playable: false, description: "High-speed racing action" },
   { id: "racing2", title: "Drift Master", category: "Racing", icon: "🏁", level: 4, unlocked: true, rating: 4.7, plays: 198765, playable: false, description: "Master the drift" },
-  { id: "racing3", title: "Kart Racing", category: "Racing", icon: "🛞", level: 5, unlocked: false, rating: 4.8, plays: 287654, playable: false, description: "Kart racing fun" },
+  { id: "racing3", title: "Mario Kart Legends", category: "Racing", icon: "🛞", level: 5, unlocked: true, rating: 4.9, plays: 587654, playable: false, description: "Iconic kart racing" },
   { id: "racing4", title: "Moto GP", category: "Racing", icon: "🏍️", level: 5, unlocked: false, rating: 4.6, plays: 167890, playable: false, description: "Motorcycle racing" },
   { id: "racing5", title: "Rally Challenge", category: "Racing", icon: "🚗", level: 6, unlocked: false, rating: 4.7, plays: 145678, playable: false, description: "Off-road racing" },
+  { id: "racing6", title: "Crash Team Racing", category: "Racing", icon: "🏆", level: 5, unlocked: true, rating: 4.8, plays: 456789, playable: false, description: "Bandicoot racing action" },
+  { id: "racing7", title: "F-Zero", category: "Racing", icon: "🚀", level: 6, unlocked: false, rating: 4.7, plays: 234567, playable: false, description: "Futuristic hover racing" },
+  { id: "racing8", title: "Diddy Kong Racing", category: "Racing", icon: "🐵", level: 5, unlocked: false, rating: 4.6, plays: 198765, playable: false, description: "Adventure racing" },
 
   // Fighting Games
-  { id: "fight1", title: "Street Brawl", category: "Fighting", icon: "🥊", level: 6, unlocked: false, rating: 4.8, plays: 234567, playable: false, description: "Classic fighting action" },
+  { id: "fight1", title: "Street Fighter II", category: "Fighting", icon: "🥊", level: 6, unlocked: true, rating: 4.9, plays: 534567, playable: false, description: "Legendary fighting game" },
   { id: "fight2", title: "Ninja Combat", category: "Fighting", icon: "🥷", level: 6, unlocked: false, rating: 4.7, plays: 198765, playable: false, description: "Martial arts mastery" },
-  { id: "fight3", title: "Monster Clash", category: "Fighting", icon: "🦖", level: 7, unlocked: false, rating: 4.6, plays: 176543, playable: false, description: "Giant monster battles" },
-  { id: "fight4", title: "Samurai Duel", category: "Fighting", icon: "⚔️", level: 7, unlocked: false, rating: 4.9, plays: 187654, playable: false, description: "Honor and steel" },
+  { id: "fight3", title: "Tekken Fury", category: "Fighting", icon: "🦖", level: 7, unlocked: false, rating: 4.8, plays: 376543, playable: false, description: "3D fighting mastery" },
+  { id: "fight4", title: "Mortal Kombat", category: "Fighting", icon: "⚔️", level: 7, unlocked: false, rating: 4.9, plays: 487654, playable: false, description: "Finish him!" },
+  { id: "fight5", title: "Smash Bros Ultimate", category: "Fighting", icon: "🎮", level: 8, unlocked: false, rating: 5.0, plays: 698765, playable: false, description: "All-star brawler" },
+  { id: "fight6", title: "Soul Calibur", category: "Fighting", icon: "🗡️", level: 7, unlocked: false, rating: 4.7, plays: 234567, playable: false, description: "Weapon-based combat" },
 
   // Strategy Games
   { id: "chess", title: "Chess Master", category: "Strategy", icon: "♟️", level: 5, unlocked: true, rating: 4.7, plays: 198765, playable: false, description: "Classic chess battles" },
@@ -83,8 +94,11 @@ export const games: Game[] = [
   // Platformer Games
   { id: "platform1", title: "Jump Quest", category: "Platformer", icon: "🦘", level: 2, unlocked: true, rating: 4.6, plays: 187654, playable: false, description: "Precision platforming" },
   { id: "platform2", title: "Pixel Runner", category: "Platformer", icon: "🏃", level: 3, unlocked: true, rating: 4.7, plays: 198765, playable: false, description: "Endless running fun" },
-  { id: "platform3", title: "Cave Explorer", category: "Platformer", icon: "⛰️", level: 4, unlocked: false, rating: 4.5, plays: 134567, playable: false, description: "Explore deep caves" },
-  { id: "platform4", title: "Sky Jumper", category: "Platformer", icon: "☁️", level: 4, unlocked: false, rating: 4.8, plays: 176543, playable: false, description: "Jump through clouds" },
+  { id: "platform3", title: "Cave Explorer", category: "Platformer", icon: "⛰️", level: 4, unlocked: true, rating: 4.5, plays: 134567, playable: false, description: "Explore deep caves" },
+  { id: "platform4", title: "Sky Jumper", category: "Platformer", icon: "☁️", level: 4, unlocked: true, rating: 4.8, plays: 176543, playable: false, description: "Jump through clouds" },
+  { id: "platform5", title: "Mega Jump Man", category: "Platformer", icon: "👨", level: 3, unlocked: true, rating: 4.9, plays: 445678, playable: false, description: "Legendary jumping hero" },
+  { id: "platform6", title: "Rayman Legends", category: "Platformer", icon: "👐", level: 5, unlocked: false, rating: 4.8, plays: 298765, playable: false, description: "Limbless hero adventure" },
+  { id: "platform7", title: "Tropical Freeze", category: "Platformer", icon: "🦍", level: 6, unlocked: false, rating: 4.7, plays: 234567, playable: false, description: "Kong family adventure" },
 
   // Rhythm Games
   { id: "rhythm1", title: "Beat Master", category: "Rhythm", icon: "🎵", level: 5, unlocked: false, rating: 4.9, plays: 298765, playable: false, description: "Match the rhythm" },
@@ -101,9 +115,12 @@ export const games: Game[] = [
   // Retro Classic Games
   { id: "retro1", title: "Frogger", category: "Classic", icon: "🐸", level: 2, unlocked: true, rating: 4.8, plays: 234567, playable: false, description: "Cross the road safely" },
   { id: "retro2", title: "Q*bert", category: "Classic", icon: "🔶", level: 3, unlocked: true, rating: 4.5, plays: 145678, playable: false, description: "Jump on cubes" },
-  { id: "retro3", title: "Donkey Kong", category: "Classic", icon: "🦍", level: 4, unlocked: false, rating: 4.9, plays: 298765, playable: false, description: "Climb to the top" },
+  { id: "retro3", title: "Donkey Kong", category: "Classic", icon: "🦍", level: 4, unlocked: true, rating: 4.9, plays: 298765, playable: false, description: "Climb to the top" },
   { id: "retro4", title: "Centipede", category: "Classic", icon: "🐛", level: 3, unlocked: true, rating: 4.6, plays: 176543, playable: false, description: "Shoot the centipede" },
   { id: "retro5", title: "Joust", category: "Classic", icon: "🦅", level: 5, unlocked: false, rating: 4.7, plays: 154321, playable: false, description: "Flying bird battles" },
+  { id: "retro6", title: "Contra", category: "Classic", icon: "💪", level: 6, unlocked: false, rating: 4.9, plays: 356789, playable: false, description: "Classic run and gun" },
+  { id: "retro7", title: "Double Dragon", category: "Classic", icon: "🥋", level: 5, unlocked: false, rating: 4.7, plays: 276543, playable: false, description: "Beat 'em up legend" },
+  { id: "retro8", title: "Bubble Bobble", category: "Classic", icon: "🐲", level: 4, unlocked: true, rating: 4.8, plays: 298765, playable: false, description: "Trap enemies in bubbles" },
 
   // Casual Games
   { id: "casual1", title: "Bubble Pop", category: "Casual", icon: "🫧", level: 1, unlocked: true, rating: 4.6, plays: 345678, playable: false, description: "Pop matching bubbles" },
@@ -112,12 +129,16 @@ export const games: Game[] = [
   { id: "casual4", title: "Color Switch", category: "Casual", icon: "🎨", level: 2, unlocked: true, rating: 4.4, plays: 198765, playable: false, description: "Match the colors" },
   { id: "casual5", title: "Jigsaw Puzzle", category: "Casual", icon: "🧩", level: 3, unlocked: true, rating: 4.8, plays: 287654, playable: false, description: "Complete the picture" },
 
-  // Bonus Games
-  { id: "bonus1", title: "Coin Master", category: "Bonus", icon: "💰", level: 8, unlocked: false, rating: 4.7, plays: 234567, playable: false, description: "Collect all coins" },
+  // Bonus & RPG Games
+  { id: "bonus1", title: "Coin Master", category: "RPG", icon: "💰", level: 8, unlocked: false, rating: 4.7, plays: 234567, playable: false, description: "Collect all coins" },
   { id: "bonus2", title: "Lucky Spin", category: "Bonus", icon: "🎰", level: 8, unlocked: false, rating: 4.6, plays: 198765, playable: false, description: "Spin to win" },
   { id: "bonus3", title: "Treasure Hunt", category: "Bonus", icon: "🗺️", level: 9, unlocked: false, rating: 4.8, plays: 176543, playable: false, description: "Find hidden treasure" },
   { id: "bonus4", title: "Mystery Box", category: "Bonus", icon: "📦", level: 9, unlocked: false, rating: 4.5, plays: 154321, playable: false, description: "Open mystery rewards" },
   { id: "bonus5", title: "Daily Challenge", category: "Bonus", icon: "🎁", level: 10, unlocked: false, rating: 4.9, plays: 298765, playable: false, description: "New challenge daily" },
+  { id: "pokemon", title: "Pocket Monsters", category: "RPG", icon: "⚡", level: 7, unlocked: false, rating: 5.0, plays: 789654, playable: false, description: "Catch them all!" },
+  { id: "final-fantasy", title: "Final Fantasy VII", category: "RPG", icon: "🗡️", level: 8, unlocked: false, rating: 4.9, plays: 567890, playable: false, description: "Epic JRPG adventure" },
+  { id: "chrono", title: "Chrono Adventure", category: "RPG", icon: "⏰", level: 8, unlocked: false, rating: 4.9, plays: 456789, playable: false, description: "Time-traveling RPG" },
+  { id: "earthbound", title: "Mother's Journey", category: "RPG", icon: "🌍", level: 7, unlocked: false, rating: 4.8, plays: 345678, playable: false, description: "Quirky RPG classic" },
 ];
 
 export const categories = ["All", ...Array.from(new Set(games.map((g) => g.category)))];
