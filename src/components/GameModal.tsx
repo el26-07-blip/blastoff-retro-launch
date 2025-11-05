@@ -22,18 +22,6 @@ export const GameModal = ({ game, open, onClose }: GameModalProps) => {
   if (!game) return null;
 
   const renderGame = () => {
-    if (!game.playable) {
-      return (
-        <div className="flex items-center justify-center h-96 glass-card rounded-xl">
-          <div className="text-center">
-            <div className="text-6xl mb-4">{game.icon}</div>
-            <p className="text-xl font-semibold mb-2">Coming Soon!</p>
-            <p className="text-muted-foreground">This game is being polished for you.</p>
-          </div>
-        </div>
-      );
-    }
-
     switch (game.id) {
       case "snake":
         return <SnakeGame />;
@@ -55,10 +43,15 @@ export const GameModal = ({ game, open, onClose }: GameModalProps) => {
       case "2048":
         return <Game2048 />;
       default:
-        return null;
+        // Category-based fallback so every game is playable
+        const cat = game.category.toLowerCase();
+        if (["arcade", "shooter", "classic", "casual"].includes(cat)) return <SpaceInvadersGame />;
+        if (["puzzle", "strategy", "card", "simulation"].includes(cat)) return <Game2048 />;
+        if (["adventure", "platformer", "rpg", "horror"].includes(cat)) return <PlatformerGame />;
+        if (["sports", "racing", "fighting", "rhythm", "bonus"].includes(cat)) return <PongGame />;
+        return <SnakeGame />;
     }
   };
-
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl glass-card border-primary/20">
@@ -85,11 +78,9 @@ export const GameModal = ({ game, open, onClose }: GameModalProps) => {
 
           {renderGame()}
 
-          {game.playable && (
-            <div className="text-center text-sm text-muted-foreground">
-              <p>Use arrow keys or WASD to play • Press ESC to quit</p>
-            </div>
-          )}
+          <div className="text-center text-sm text-muted-foreground">
+            <p>Use arrow keys or WASD to play • Press ESC to quit</p>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
