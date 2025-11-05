@@ -16,8 +16,8 @@ export const games: Game[] = [
   { id: "snake", title: "Snake Classic", category: "Arcade", icon: "🐍", level: 1, unlocked: true, rating: 4.8, plays: 152340, playable: true, description: "Classic snake game with modern twist" },
   { id: "pong", title: "Pong Battle", category: "Arcade", icon: "🏓", level: 1, unlocked: true, rating: 4.5, plays: 98234, playable: true, description: "The legendary paddle game" },
   { id: "breakout", title: "Brick Breaker", category: "Arcade", icon: "🧱", level: 2, unlocked: true, rating: 4.7, plays: 134567, playable: true, description: "Break all the bricks!" },
-  { id: "space", title: "Space Invaders", category: "Arcade", icon: "👾", level: 2, unlocked: true, rating: 4.9, plays: 387654, playable: false, description: "Defend Earth from aliens" },
-  { id: "pacman", title: "Pac-Maze", category: "Arcade", icon: "👻", level: 3, unlocked: true, rating: 4.9, plays: 534567, playable: false, description: "Eat dots, avoid ghosts" },
+  { id: "space", title: "Space Invaders", category: "Arcade", icon: "👾", level: 2, unlocked: true, rating: 4.9, plays: 387654, playable: true, description: "Defend Earth from aliens" },
+  { id: "pacman", title: "Pac-Maze", category: "Arcade", icon: "👻", level: 3, unlocked: true, rating: 4.9, plays: 534567, playable: true, description: "Eat dots, avoid ghosts" },
   { id: "asteroids", title: "Asteroids", category: "Arcade", icon: "☄️", level: 3, unlocked: true, rating: 4.6, plays: 245678, playable: false, description: "Destroy space rocks" },
   { id: "galaga", title: "Galaxy War", category: "Arcade", icon: "🚀", level: 4, unlocked: true, rating: 4.8, plays: 367890, playable: false, description: "Epic space shooter" },
   { id: "digdug", title: "Dig Master", category: "Arcade", icon: "⛏️", level: 4, unlocked: true, rating: 4.4, plays: 198765, playable: false, description: "Dig and defeat monsters" },
@@ -25,8 +25,8 @@ export const games: Game[] = [
   { id: "tempest", title: "Tempest Storm", category: "Arcade", icon: "🌀", level: 6, unlocked: false, rating: 4.6, plays: 154321, playable: false, description: "Tube shooter classic" },
   
   // Puzzle Games
-  { id: "tetris", title: "Block Fall", category: "Puzzle", icon: "🎮", level: 1, unlocked: true, rating: 4.9, plays: 345678, playable: false, description: "Classic block puzzle" },
-  { id: "2048", title: "2048 Pro", category: "Puzzle", icon: "🔢", level: 1, unlocked: true, rating: 4.7, plays: 234567, playable: false, description: "Merge to 2048" },
+  { id: "tetris", title: "Block Fall", category: "Puzzle", icon: "🎮", level: 1, unlocked: true, rating: 4.9, plays: 345678, playable: true, description: "Classic block puzzle" },
+  { id: "2048", title: "2048 Pro", category: "Puzzle", icon: "🔢", level: 1, unlocked: true, rating: 4.7, plays: 234567, playable: true, description: "Merge to 2048" },
   { id: "minesweeper", title: "Mine Hunter", category: "Puzzle", icon: "💣", level: 2, unlocked: true, rating: 4.5, plays: 156789, playable: false, description: "Find all the mines" },
   { id: "sudoku", title: "Sudoku Master", category: "Puzzle", icon: "🧩", level: 2, unlocked: true, rating: 4.6, plays: 198765, playable: false, description: "Number puzzle challenge" },
   { id: "rubik", title: "Cube Solver", category: "Puzzle", icon: "🎲", level: 3, unlocked: true, rating: 4.3, plays: 87654, playable: false, description: "Virtual Rubik's cube" },
@@ -36,7 +36,7 @@ export const games: Game[] = [
 
   // Adventure Games  
   { id: "zelda", title: "Legend Quest", category: "Adventure", icon: "⚔️", level: 5, unlocked: true, rating: 4.9, plays: 456789, playable: false, description: "Epic adventure awaits" },
-  { id: "mario", title: "Super Plumber Bros", category: "Adventure", icon: "🍄", level: 5, unlocked: true, rating: 4.9, plays: 567890, playable: false, description: "Classic platforming adventure" },
+  { id: "mario", title: "Super Plumber Bros", category: "Adventure", icon: "🍄", level: 5, unlocked: true, rating: 4.9, plays: 567890, playable: true, description: "Classic platforming adventure" },
   { id: "crash", title: "Bandicoot Rush", category: "Adventure", icon: "🦊", level: 5, unlocked: true, rating: 4.9, plays: 512345, playable: false, description: "Spin and jump through levels" },
   { id: "sonic", title: "Speed Runner", category: "Adventure", icon: "💨", level: 6, unlocked: true, rating: 4.8, plays: 345678, playable: false, description: "Gotta go fast!" },
   { id: "metroid", title: "Space Explorer", category: "Adventure", icon: "🛸", level: 6, unlocked: false, rating: 4.7, plays: 234567, playable: false, description: "Explore alien worlds" },

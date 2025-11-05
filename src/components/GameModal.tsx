@@ -5,6 +5,12 @@ import { Game } from "@/data/games";
 import { SnakeGame } from "./games/SnakeGame";
 import { PongGame } from "./games/PongGame";
 import { BreakoutGame } from "./games/BreakoutGame";
+import { TetrisGame } from "./games/TetrisGame";
+import { PacManGame } from "./games/PacManGame";
+import { SpaceInvadersGame } from "./games/SpaceInvadersGame";
+import { FlappyGame } from "./games/FlappyGame";
+import { PlatformerGame } from "./games/PlatformerGame";
+import { Game2048 } from "./games/Game2048";
 
 interface GameModalProps {
   game: Game | null;
@@ -35,6 +41,19 @@ export const GameModal = ({ game, open, onClose }: GameModalProps) => {
         return <PongGame />;
       case "breakout":
         return <BreakoutGame />;
+      case "tetris":
+        return <TetrisGame />;
+      case "pacman":
+        return <PacManGame />;
+      case "space":
+        return <SpaceInvadersGame />;
+      case "flappy-bird":
+        return <FlappyGame />;
+      case "mario":
+      case "super-plumber":
+        return <PlatformerGame />;
+      case "2048":
+        return <Game2048 />;
       default:
         return null;
     }
